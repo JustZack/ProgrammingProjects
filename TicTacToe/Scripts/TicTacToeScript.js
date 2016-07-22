@@ -1,39 +1,42 @@
 $(document).ready(function(){
+  //Globaly defined so it is persistant with each move
   var XO_Counter = 0;
+  //Use this array to keep track of the board
   var TicTacToeArray = [["","",""],["","",""],["","",""]];
 
   $('.TicTacToeSquare').click(function(){
-    var XorO;
+    //Check if there is already an X or O where we clicked.
     if($(this).find('img').length)
     {
-      console.log('Mis-Click...');
+      console.log('That spot is already marked!');
+      return; //Exit the method
     }
-    else if(XO_Counter == 0)
+    var XorO; //Use this to store which mark we are on(X or O)
+    if(XO_Counter == 0)
     {
-      XorO = 'X';
-
+      XorO = 'X'; //Store X as the current mark we are on
     }
     else if(XO_Counter == 1)
     {
-      XorO = 'O';
+      XorO = 'O'; //Store O as the current mark we are on
     }
-
-    $(this).find('img').remove();
+    //Add an image tag to the TicTacToeSquare that was clicked.
     $(this).append('<img src="Images/' + XorO + '.png">');
-    console.log(XorO + "-Button added");
-    if(SetArray($(this)))
+    console.log(XorO + "-Button added"); //Log what just happened.
+    SetArray($(this), XorO) //Set the array we store to keep track.
+    if(WinCheck()) //check if anybody has won at this point in the game
     {
-      return;
+      return; //Returned true, so just exit the method now
     }
     else
     {
       if(XO_Counter == 0)
       {
-        XO_Counter++;
+        XO_Counter++; //otherwise Increment the XO_Counter, representing O now.
       }
       else if(XO_Counter == 1)
       {
-        XO_Counter--;
+        XO_Counter--; //otherwise Increment the XO_Counter, representing X now.
       }
     }
   });
@@ -42,16 +45,8 @@ $(document).ready(function(){
     ResetBoard();
   });
 
-  function SetArray(Element){
-    var XorO;
-    if(XO_Counter == 0)
-    {
-      XorO = "X";
-    }
-    else if(XO_Counter == 1)
-    {
-      XorO = "O";
-    }
+  function SetArray(Element, XorO){
+    //Determine what location of the array should be filled
     switch(Element.attr('name'))
     {
       case "Top_Left":
@@ -81,20 +76,21 @@ $(document).ready(function(){
       case "Bot_Right":
         TicTacToeArray[2][2] = XorO;
         break;
-    }
-    return WinCheck();
+      }
   }
   function WinCheck(){
-    var _RESET = false;
-    var Winner;
-    for(var i = 1;i < 3;i++)
+    var _RESET = false; //If somebody won this is true
+    var Winner; //Store either X or O depending on the value of i below
+    for(var i = 0;i < 2;i++)
     {
-      if(i == 1)
+      if(i == 0)
       {
+        //All winning conditions for X will not be checked
         Winner = "X"
       }
-      else if(i == 2)
+      else if(i == 1)
       {
+        //All winning conditions for O will not be
         Winner = "O";
       }
       //Top Row Full
@@ -145,21 +141,23 @@ $(document).ready(function(){
         alert(Winner + " Wins!");
         _RESET = true;
       }
-      //Somebody Won!
+
       if(_RESET == true)
       {
         ResetBoard();
-        return true;
+        return true; //Somebody won
       }
     }
   }
   function ResetBoard(){
+    //Go through every element in out array and make it nothing
     for(var i = 0;i < 3;i++)
     {
       TicTacToeArray[i][0] = "";
       TicTacToeArray[i][1] = "";
       TicTacToeArray[i][2] = "";
     }
+    //Remove the image tags
     $('.TicTacToeSquare').each(function(){
       $(this).find('img').remove();
     });
