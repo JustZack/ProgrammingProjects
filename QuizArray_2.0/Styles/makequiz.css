@@ -1,0 +1,106 @@
+p {
+    text-align: center;
+    font-size: 17.5px;
+}
+
+body {
+    background-color: grey;
+}
+
+.Quiz_Name_Container {
+    border: 2px solid blue;
+    background-color: lightblue;
+    border-radius: 20px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+#Quiz_Name {
+    margin: 0 auto;
+    display: block;
+}
+
+#notice {
+    margin-bottom: 10px;
+}
+
+.Make_Quiz_Block {
+    margin: 0 auto;
+    border: 2px solid red;
+    border-radius: 20px;
+    width: 60%;
+    background-color: yellow;
+    margin-top: 10px;
+}
+
+#Quiz_Question {
+    width: 90%;
+}
+
+#X_Button_Question, #X_Button_Answer  {
+    cursor: pointer;
+    float: right;
+    height: 18px;
+    width: 18px;
+    margin-right: 20px;
+    margin-left: -20px;
+}
+
+.Answer {
+    align-items: center;
+    margin-bottom: 20px;
+    width: 80%;
+    margin-left: 40px;
+}
+
+#Add_Answer {
+    margin: 0 auto;
+    border: 2px solid #33ccff;
+    border-radius: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #33ccff;
+    width: 250px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#Add_New_Question {
+    border: 2px solid #33ccff;
+    border-radius: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #33ccff;
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#Plus_Button {
+    float: left;
+    height: 18px;
+    width: 18px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-right: -20px;
+}
+
+#Submit_Survey {
+    border: 2px solid #ff6633;
+    border-radius: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #ff6633;
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#Check_Mark {
+    float: left;
+    height: 18px;
+    width: 18px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-right: -20px;
+}

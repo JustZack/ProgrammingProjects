@@ -1,0 +1,61 @@
+body {
+    background-color: grey;
+}
+
+label {
+    cursor: pointer;
+}
+
+#Survey-Container {
+    width: 80%;
+    border: 2px solid #33ccff;
+    border-radius: 70px;
+    background-color: #33ccff;
+    margin: 0 auto;
+}
+
+#SurveyName {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 55px;
+}
+
+.Question-Container {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    background-color: #49bbe1;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    white-space: pre-wrap;
+}
+
+.Question {
+    text-align: center;
+    font-size: 45px;
+}
+
+.AnswerDiv {
+    font-size: 25px;
+    margin-left: 20%;
+}
+
+#Submit-Button {
+    border: 2px solid #ff6633;
+    border-radius: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    background-color: #ff6633;
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#Check_Mark {
+    float: left;
+    height: 18px;
+    width: 18px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-right: -20px;
+}
