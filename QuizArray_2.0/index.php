@@ -6,7 +6,6 @@
         <script type="text/javascript" src="Scripts/IndexScript.js"></script>
     </head>
     <body>
-        <!-- Create a NEW quiz program, because it wasnt that tough last time right? -->
         <div id="Admin"><div id="Admin_text"><center>Admin Stuff</center></div><div id="Remove_ID"><input id="ID_num"></input><br><center id="Remove_Button">Remove ID</center></div></div>
         <div class="Make_Quiz center">
             <center>
@@ -20,16 +19,13 @@
             <?php
             //GOAL: Get all current availible quizes and put them in their own divs
 
-            //Store the credentials for the database.
-            //OK to be in the raw PHP because this is not going to be posted anywhere
-            //And will not contain sensitive information
+            //Database credentials
             $serverName = 'localhost';
             $userName = 'root';
             $password = '';
             $dbname = 'quiz_db';
 
-            //Create an object which can interact with the databse
-            //Then ensure that the connection was made without error.
+            //Connect to database and check for errors
             $db_connection = new mysqli($serverName, $userName, $password, $dbname);
             if($db_connection->connect_error) {
               die("Connection failed: " . $conn->connect_error);
@@ -42,10 +38,8 @@
             $db_connection->query(""
             ."ALTER TABLE `quiz_data` ADD `id` INT UNSIGNED NOT NULL"
             ." AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);");
-            //^^^This line is messy because it was too long be be seen on the picture.
 
-            //This block actualy queries the data we are looking for
-            //In the database.
+            //This block actualy queries the data we are looking for in the db
             $sql = "SELECT * FROM `quiz_data`";
             $result = $db_connection->query($sql);
             //Close the connection to the databse because we no longer need to be connected to it.
@@ -56,8 +50,7 @@
             //Check to make sure there are any surveys in the database.
             if($result->num_rows == 0)
             {
-                //This block of code in the if statment simple lets the end user know
-                //That there were no surveys found in the database.
+                //Let the user no that no surveys were found in the database
                 echo "<div class='Quiz_Block'>";
                 echo "<div id='question_name'>No surveys found :(</div>";
                 echo "</div>";
@@ -65,18 +58,15 @@
             //Otherwise start counting the questions
             else
             {
-                //Cycle through each entry in the database
+                //Cycle through each row in the database
                 while($row = $result->fetch_assoc())
                 {
-                    //Get the entire row Called Questions from our
-                    //selected location of the database table
+                    //Get the questions column from the row
                     $Questions = $row['questions'];
-                    //Check for a question up to 25 times(because 25 seemed high enough)
-                    for($i = 1;$i < 25;$i++)
+                    //Check for a question up to 100 times
+                    for($i = 1;$i < 100;$i++)
                     {
-                        //Store a variable that has the position of the current
-                        //Question Number.
-                        //The brackets signify the start of a question in my databse
+                        //Looks for a question with $i question number
                         $QLoc = strpos($Questions, "<" . (string)$i . ">");
                         //If Qloc is greater than -1 then it found a question
                         if($QLoc > -1)

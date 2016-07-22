@@ -34,41 +34,23 @@
         echo "<div id='Survey-Container'>";
         echo "<center><div id='SurveyName'>" . $row['name'] . "</div></center>";
 
-        //Save undefined arrays that will eventualy Store
-        //All of the questions and answers to those questions
         $Questions = array(); //These are the questions without formatting
         $Answers = array();   //These are the answers with reduced formatting
 
-        //These are the raw versions containing identifiers for each questions and answers
-        //These contain identifiers for each question and answer
-        //so they can be differenciated.
         $Questions_POST = $row['questions']; //Grab the questions column of the selected ID
         $Answers_POST = $row['answers'];     //Grab the answers column of the selected ID
 
-        //Find all questions and add them to the array
         $Qstart; //This var stores the starting index of a question
         $Qend;   //This var stores the ending index of a question
 
-        //Count up from two to the index of the last character of the array
-        //We start at two because the first index (0) is a < symbol
-        //And the second index (1) is the number 1 ALWAYS
-        //It is important to understand that
-        //questions are formatted like this in the Database:
-  //<1>This is a question?<2>This is also a question??<3>This is not a question!
-        for($i = 2;$i < strlen($Questions_POST);$i++)
+        for($i = 2;$i < strlen($Questions_POST);$i++) //Go through all questions
         {
-            //If the current character we are on is >,
-            //which is the start of the current question
-            //then we will save the Start Of the question as
-            //that location plus one because
-            //the index we are on is the character >
+            //Start of question
             if($Questions_POST[$i] == ">")
             {
                 $Qstart = $i + 1;
             }
-            //If the character is <, which is the start of the next question,
-            //we will save that index without subtracting one to keep the
-            //length correct later.
+            //End of question
             if($Questions_POST[$i] == "<")
             {
                 $Qend = $i;
@@ -80,8 +62,7 @@
                 $Qstart = 0;
                 $Qend = 0;
             }
-            //Check if we are at the end of the string so we can
-            //call the end of the file the end of the final question
+            //Always end of question because end of string
             else if($i == strlen($Questions_POST) - 1)
             {
                 //Same happeneds here as does in the else if above.
@@ -91,24 +72,18 @@
             }
         }
 
-        //Find all Answers and add them to the array
         $Astart; //Store the starting index of each answer
         $Aend;   //Store the ending index of each answer
-        //Start from index 1 and go all the way up to the length of the answers
-        //stored in the database
-        //Answers are formated like this in the database:
-        //<1>answer1<1>answer2<1>answer3<2>answer1<2>answer<2>answer3
-        //every answer with <number> preceding it are used in the question
-//number they corespond to EX: <1>answer1<1>answer2 are both used in <1>question
-        for($i = 1;$i < strlen($Answers_POST);$i++)
+
+        for($i = 1;$i < strlen($Answers_POST);$i++) //Go through all answers
         {
-            //Check if the current character is >
+            //Start of answer
             if($Answers_POST[$i] == ">")
             {
                 //Save this location minus one so the answer number is included
                 $Astart = $i - 1;
             }
-            //Check if the current character is <
+            //End of answer
             else if($Answers_POST[$i] == "<")
             {
                 //Save that location as the end of the answer
@@ -121,8 +96,7 @@
                 $Astart = 0;
                 $Aend = 0;
             }
-            //Check if we are at the end of the string and
-            //call that the end of the answer
+            //Always and of answer because end of string
             else if($i == strlen($Answers_POST) - 1)
             {
                 //Add one so the end of the last answer is not cut off.
@@ -133,7 +107,7 @@
                 $Answers[] = $tempAnswer;
             }
         }
-        //Cycle through each question int he questions array
+        //Cycle through each question in the questions array
         for($i = 0;$i < count($Questions);$i++)
         {
             //Start by printing out the starting container of the question itself

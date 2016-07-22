@@ -25,13 +25,7 @@ $(document).ready(function(){
     $("#X_Button_Question").live('click', function(){
         $(this).parent().parent().remove();
         console.log('Question_Block removed with name ' + $(this).parent().parent().attr('name'));
-        /*
-        var ClickedX_Button = $(this).attr('name');
-        var QuestionNum = ClickedX_Button.substring(ClickedX_Button.length - 1, ClickedX_Button.length);
-        $("div[name=Question_Block" + QuestionNum + "]").remove();
-        console.log('Question_Block removed with name Question_Block' + Question_counter);
-        */
-        /*Question_counter -= 1;*/
+        Question_counter -= 1;
     });
 
     $("#X_Button_Answer").live('click', function(){

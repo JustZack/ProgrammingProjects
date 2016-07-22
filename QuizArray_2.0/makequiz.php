@@ -23,8 +23,3 @@
         </form>
     </body>
 </html>
-
-<!--grandma stuff
-User: kklausmeier@gmail.com
-Pass: chezkayk
--->

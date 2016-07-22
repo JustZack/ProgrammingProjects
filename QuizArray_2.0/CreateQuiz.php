@@ -6,17 +6,17 @@
         $SurveyAnswers = array();
         $SurveyName = str_replace("'", "\'", $SurveyName);
 
-
         $QuestionCount = 0;
         $AnswerCount = array();
         //Check for each question
-        for($i = 1;$i < 25;$i++)
+        for($i = 1;$i < 100;$i++)
         {
             $POSTname = "Question" . $i;
             if(isset($_POST[$POSTname]))
             {
-                $_POST[$POSTname] = str_replace("'", "\'", $_POST[$POSTname]);
-                array_push($SurveyQuestions, "<" . $i . ">" . $_POST[$POSTname]);
+                echo $_POST[$POSTname];
+                $temp = str_replace("'", "\'", $_POST[$POSTname]);
+                array_push($SurveyQuestions, "<" . $i . ">" . $temp);
                 $QuestionCount++;
             }
             else
@@ -25,7 +25,7 @@
             }
         }
 
-        //Check for each occurence of an answer from the specified question
+        //Check for each occurence of an answer
         for($i = 1;$i < 100;$i++)
         {
             $POSTname = "Answer" . $i;
@@ -34,6 +34,7 @@
                 $TempAnsCount = 0;
                 foreach($_POST[$POSTname] as $answer)
                 {
+                    echo $answer;
                     $answer = str_replace('"', "\"", $answer);
                     $answer = str_replace("'", "\'", $answer);
                     array_push($SurveyAnswers, "<" . $i .">" . $answer);
@@ -46,7 +47,7 @@
                 break;
             }
         }
-
+        $SurveyChoiceString = "";
         for($i = 0;$i < $QuestionCount;$i++)
         {
             for($u = 0;$u < $AnswerCount[$i];$u++)
@@ -56,17 +57,12 @@
                 $SurveyChoiceString .= "0";
 
               }
-              else if($i == 0 && $u == 0)
-              {
-                $SurveyChoiceString .= "0<";
-              }
               else
               {
                 $SurveyChoiceString .= "0<";
               }
             }
         }
-        echo $SurveyChoiceString;
         //Make arrays into a single string
         $Questions = implode($SurveyQuestions);
         $Answers = implode($SurveyAnswers);
