@@ -85,65 +85,57 @@ $(document).ready(function(){
     {
       if(i == 0)
       {
-        //All winning conditions for X will not be checked
-        Winner = "X"
+        Winner = "X" //All winning conditions for X will not be checked
       }
       else if(i == 1)
       {
-        //All winning conditions for O will not be
-        Winner = "O";
+        Winner = "O"; //All winning conditions for O will not be
       }
+
       //Top Row Full
       if(TicTacToeArray[0][0] == Winner && TicTacToeArray[0][1] == Winner && TicTacToeArray[0][2] == Winner)
       {
-        alert(Winner + " Wins!");
         _RESET = true;
       }
       //Mid Row Full
       else if(TicTacToeArray[1][0] == Winner && TicTacToeArray[1][1] == Winner && TicTacToeArray[1][2] == Winner)
       {
-        alert(Winner + " Wins!");
         _RESET = true;
       }
       //Bot Row Full
       else if(TicTacToeArray[2][0] == Winner && TicTacToeArray[2][1] == Winner && TicTacToeArray[2][2] == Winner)
       {
-        alert(Winner + " Wins!");
         _RESET = true;
       }
       //Left Column Full
       else if(TicTacToeArray[0][0] == Winner && TicTacToeArray[1][0] == Winner && TicTacToeArray[2][0] == Winner)
       {
-        alert(Winner + " Wins!");
         _RESET = true;
       }
       //Mid Column Full
       else if(TicTacToeArray[0][1] == Winner && TicTacToeArray[1][1] == Winner && TicTacToeArray[2][1] == Winner)
       {
-        alert(Winner + " Wins!");
         _RESET = true;
       }
       //Right Column Full
       else if(TicTacToeArray[0][2] == Winner && TicTacToeArray[1][2] == Winner && TicTacToeArray[2][2] == Winner)
       {
-        alert(Winner + " Wins!");
         _RESET = true;
       }
       //Left To Right Full
       else if(TicTacToeArray[0][0] == Winner && TicTacToeArray[1][1] == Winner && TicTacToeArray[2][2] == Winner)
       {
-        alert(Winner + " Wins!");
         _RESET = true;
       }
       //Right To Left Full
       else if(TicTacToeArray[0][2] == Winner && TicTacToeArray[1][1] == Winner && TicTacToeArray[2][0] == Winner)
       {
-        alert(Winner + " Wins!");
         _RESET = true;
       }
 
       if(_RESET == true)
       {
+        alert(Winner + " Wins!");
         ResetBoard();
         return true; //Somebody won
       }
