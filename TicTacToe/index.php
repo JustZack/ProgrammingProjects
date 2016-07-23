@@ -24,7 +24,7 @@
         <div class='TicTacToeSquare' name="Bot_Mid"></div>
         <div class='TicTacToeSquare' id='right' name="Bot_Right"></div>
       </div>
-       
+
     </div>
 
     <div id='Reset_Button'>

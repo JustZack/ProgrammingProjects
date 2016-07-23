@@ -63,6 +63,11 @@
     //Send the updated quiz results to the database
     $sql = "UPDATE `quiz_data` set `AnswerChoices` = '$NewAnswers_inDB' WHERE `id` = '$idNUM'";
     $db_connection->query($sql);
+    //Get the number of responders from the database and save it.
+    $newResponderCount = $row['ResponderCount'] + 1;
+    //Update the values in the database for the responder count
+    $sql = "UPDATE `quiz_data` set `ResponderCount` = '$newResponderCount' WHERE `id` = '$idNUM'";
+    $db_connection->query($sql);
 
     //From here up we were updating the results
     //From here down we will be displaying the results
@@ -75,7 +80,7 @@
 
     //Start of the container for the survey
     echo "<div id='Survey-Container'>";
-    echo "<center><div id='SurveyName'> Results for: " . $row['name'] . "</div></center>";
+    echo "<center><div id='SurveyName'> Results for " . $newResponderCount . " responders: " . $row['name'] . "</div></center>";
 
     $Questions = array(); //These are the questions without formatting
     $Answers = array();   //These are the answers with reduced formatting

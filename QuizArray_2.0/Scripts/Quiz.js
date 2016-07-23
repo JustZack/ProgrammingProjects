@@ -10,7 +10,6 @@ $(document).ready(function(){
         $('.Answer').each(function(){
             if($(this).is(':checked'))
             {
-                //AnsChoice[counter] = $(this).parent().text();
                 AnsChoice[AnsCounter] = 1;
                 AnsCounter++;
                 counter++;

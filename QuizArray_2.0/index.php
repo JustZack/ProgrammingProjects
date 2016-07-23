@@ -14,7 +14,7 @@
             </center>
         </div>
         <div class="Quizes_Container center">
-            <div id='Quiz_title'>Select from existing surveys below</div>
+            <div id='Quiz_title'>Select from existing surveys below...</div>
 
             <?php
             //GOAL: Get all current availible quizes and put them in their own divs

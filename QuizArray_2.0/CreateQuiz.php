@@ -79,7 +79,7 @@
           die("Connection failed: " . $conn->connect_error);
         }
         //SQL stuff, then query the table with that SQL
-        $sql = "INSERT INTO `quiz_data` (`id`, `name`, `questions`, `answers`, `AnswerChoices`, `date_created`) VALUES (NULL, '$SurveyName', '$Questions', '$Answers', '$SurveyChoiceString',CURRENT_TIMESTAMP)";
+        $sql = "INSERT INTO `quiz_data` (`id`, `name`, `questions`, `answers`, `AnswerChoices`, `date_created`, `ResponderCount`) VALUES (NULL, '$SurveyName', '$Questions', '$Answers', '$SurveyChoiceString',CURRENT_TIMESTAMP, '0')";
 
         if($db_connection->query($sql) === TRUE)
         {

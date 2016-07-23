@@ -1,20 +1,16 @@
-//Wait until the document is fully loaded in the browser to start running.
 $(document).ready(function(){
     //Check for a click on the 'Make a new survey' button
     $(".Make_Quiz").click(function(){
         //Take us to the makequiz.php file  so we can make a quiz / survey.
-        window.location.href = "makequiz.php";
+        window.location.href = "makequiz.html";
     });
-    //Check if a quiz was clicked on
-    $('.Quiz_Block').click(function(){
+    $('.Quiz_Block').click(function(){ //Check if a quiz was clicked on
         //Get all of the data in the div that was just clicked.
         var entireDiv = $(this).text();
-        //Make sure that the user didnt click on the message that is shown when
-        //There are no surveys in the database.
+        //Check if the user clicked the no surveys found block.
         if(entireDiv == "No surveys found :(")
         {
-          //Completly break out of the method.
-            return false;
+            return false; //Completly break out of the method.
         }
         //Get the text from the div which contains the ID of the quiz EX: "ID: 1"
         var TextOfID = $(this).children('#question_id').text();
@@ -26,8 +22,6 @@ $(document).ready(function(){
     //Check if any key was pressed that the document can detect.
     $(document).keypress(function(key){
       //Check if that key was Lowercase or Uppercase J
-      //This is my 'admin menu'. I only have it here because it made things simpler while
-      //Debugging the php script because I was making several quizes to check several things.
         if(key.which == 74 || key.which == 106)
         {
             //Checks if the admin panel is not already in view
@@ -42,31 +36,24 @@ $(document).ready(function(){
                 //Changes the display property to none so it is no longer show.
                 $('#Admin').css("display", "none");
                 //Make the remove ID 'button' not be shown either
-                //so if / when the admin panel is shown again that button is
-                //not shown until it is clicked again
                 $("#Remove_ID").css("display" , "none");
             }
         }
     });
-    //Checks if the admin panel is clicked on
-    $('#Admin_text').click(function(){
+    $('#Admin_text').click(function(){ //Checks if the admin panel is clicked on
 
         //Check if the remove id button is showing or not.
         if($("#Remove_ID").css("display") == "none")
         {
-            //Show the remove ID button
-            $("#Remove_ID").css("display" , "block");
+            $("#Remove_ID").css("display" , "block"); //Show the remove ID button
         }
         else if($("#Remove_ID").css("display") == "block")
         {
-            //Make the remove ID button hidden.
-            $("#Remove_ID").css("display" , "none");
+            $("#Remove_ID").css("display" , "none"); //Make the remove ID button hidden.
         }
     });
-    //Checks if the remove ID button was clicked
-    $('#Remove_Button').click(function(){
-        //Get the ID number the user typed in the textbox
-        ID_num = $('#ID_num').val();
+    $('#Remove_Button').click(function(){ //Checks if the remove ID button was clicked
+        ID_num = $('#ID_num').val(); //Get the ID number the user typed in the textbox
         //Check if the user even typed anything before pressing the button
         if(ID_num == "")
         {
